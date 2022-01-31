@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" :class="sidebar ? '' : 'aside-compact'">
 
 <head>
     <meta charset="utf-8">
@@ -22,7 +22,7 @@
 
 <body class="font-sans antialiased">
 
-    <div id="app" class="flex flex-col h-screen justify-between">
+    <div id="app" class="flex flex-col h-screen justify-between" x-data="{ sidebar: true }">
 
         @include('layouts.components.topnav')
 
@@ -32,7 +32,8 @@
 
         {{-- main content --}}
         <main class="py-6 px-0 mb-auto md:px-6">
-            <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 mb-6">
+            {{-- Content Goes Here --}}
+            {{-- <div class="grid grid-cols-1 xl:grid-cols-2 gap-6 mb-6">
                 <div
                     class="md:rounded flex flex-row bg-white border border-gray-100 dark:bg-gray-900 dark:border-gray-900 items-center shadow">
                     <!---->
@@ -78,13 +79,12 @@
                     <!---->
                 </div>
 
-            </div>
+            </div> --}}
         </main>
 
         @include('layouts.components.footer')
 
-        <div class="flex items-center flex-col justify-center overflow-hidden fixed inset-0 z-40"
-            style="display: none;">
+        <div class="flex items-center flex-col justify-center overflow-hidden fixed inset-0 z-40" style="display: none;">
             <div class="absolute inset-0 bg-gradient-to-tr from-gray-700 via-gray-900 to-gray-700 opacity-90"></div>
         </div>
 

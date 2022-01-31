@@ -1,26 +1,31 @@
-<aside id="aside"
+<aside :class="sidebar ? '' :'w-20'" id="aside"
     class="flex flex-col w-60 h-screen top-0 fixed bg-gradient-to-r from-fuchsia-700 to-rose-500 transition-position dark:bg-gray-900 overflow-auto dark:shadow-r-gray-800 z-50 -left-60 lg:left-0">
-    <div
+    <div :class="sidebar ? '' : 'lg:justify-center'"
         class="flex flex-row w-full bg-gradient-to-r from-fuchsia-800 to-rose-500 text-white shrink-0 h-14 items-center text-center">
         <!---->
-        <div class="flex-1 px-3"><b class="uppercase">{{ config('app.name') }}</b>
+        <div class="flex-1 px-3">
+            <b class="uppercase" :class="sidebar ? '' : 'lg:hidden'">{{ config('app.name') }}</b>
+            <b class="hidden uppercase"
+                :class="{ 'block' : !sidebar , 'hidden' : sidebar}" >{{ substr(config('app.name'), 0, 3) }}</b>
         </div>
     </div>
 
-    <div class="flex-1 text-white">
-        <p class="p-3 text-xs uppercase text-gray-300">General</p>
+    <div class="flex-1 text-white text-xs">
+        <p :class="sidebar ? '' : 'hidden' " class="p-3 text-xs uppercase text-gray-300">General</p>
         <ul>
             <li>
                 <a class="router-link-active bg-gradient-to-r from-fuchsia-800 to-rose-500 dark:bg-gray-700 dark:bg-opacity-70 flex cursor-pointer py-2 hover:from-fuchsia-800 hover:to-rose-500 dark:hover:bg-gray-700"
-                    aria-current="page"><span class="inline-flex justify-center items-center w-12 h-6 flex-none"><svg
-                            viewBox="0 0 24 24" width="16" height="16" class="inline-block">
+                    aria-current="page">
+                    <span :class="sidebar ? '' : 'lg:w-20 h-6' "
+                        class="inline-flex justify-center items-center w-12 h-6 flex-none">
+                        <svg viewBox="0 0 24 24" width="16" height="16" class="inline-block">
                             <path fill="currentColor"
                                 d="M21,14H3V4H21M21,2H3C1.89,2 1,2.89 1,4V16A2,2 0 0,0 3,18H10L8,21V22H16V21L14,18H21A2,2 0 0,0 23,16V4C23,2.89 22.1,2 21,2Z">
                             </path>
                         </svg>
                         <!---->
                     </span>
-                    <span class="grow">Dashboard</span>
+                    <span class="grow" :class="sidebar ? '' : 'lg:hidden' ">Dashboard</span>
                     <!---->
                 </a>
                 <!---->
@@ -135,8 +140,8 @@
         </ul>
         <p class="p-3 text-xs uppercase text-gray-300">Subs</p>
         <ul>
-            <li>
-                <a exact-active-class="bg-gray-700 bg-opacity-70 dark:bg-gray-700 dark:bg-opacity-70"
+            <li x-data="{ open:false }">
+                <a x-on:click="open = ! open"
                     class="flex cursor-pointer py-2 text-gray-300 bg-gradient-to-r hover:from-fuchsia-800 hover:to-rose-500 dark:hover:bg-gray-700"><span
                         class="inline-flex justify-center items-center w-12 h-6 flex-none"><svg viewBox="0 0 24 24"
                             width="16" height="16" class="inline-block">
@@ -145,48 +150,31 @@
                             </path>
                         </svg>
                         <!---->
-                    </span><span class="grow">Dropdown</span><span
-                        class="inline-flex justify-center items-center w-12 h-6 flex-none"><svg viewBox="0 0 24 24"
+                    </span>
+                    <span class="grow">Dropdown</span>
+                    <span class="inline-flex justify-center items-center w-12 h-6 flex-none"><svg viewBox="0 0 24 24"
                             width="16" height="16" class="inline-block">
                             <path fill="currentColor" d="M19,13H13V19H11V13H5V11H11V5H13V11H19V13Z"></path>
                         </svg>
                         <!---->
-                    </span></a>
-                <ul class="hidden">
-                    <li><a exact-active-class="bg-gray-700 bg-opacity-70 dark:bg-gray-700 dark:bg-opacity-70"
-                            class="flex cursor-pointer p-3 text-sm text-gray-300 hover:bg-gray-700 dark:hover:bg-gray-700">
+                    </span>
+                </a>
+                <ul :class="open ? '' : 'hidden'" class="text-xs">
+                    <li>
+                        <a class="flex cursor-pointer p-3 text-gray-300 hover:bg-gray-700 dark:hover:bg-gray-700">
                             <!----><span class="grow">Sub-item One</span>
                             <!---->
                         </a>
                         <!---->
                     </li>
-                    <li><a exact-active-class="bg-gray-700 bg-opacity-70 dark:bg-gray-700 dark:bg-opacity-70"
-                            class="flex cursor-pointer p-3 text-sm text-gray-300 hover:bg-gray-700 dark:hover:bg-gray-700">
+                    <li>
+                        <a class="flex cursor-pointer p-3 text-gray-300 hover:bg-gray-700 dark:hover:bg-gray-700">
                             <!----><span class="grow">Sub-item Two</span>
                             <!---->
                         </a>
                         <!---->
                     </li>
                 </ul>
-            </li>
-            <li><a exact-active-class="bg-gray-700 bg-opacity-70 dark:bg-gray-700 dark:bg-opacity-70"
-                    class="flex cursor-pointer py-2 text-gray-300 bg-gradient-to-r hover:from-fuchsia-800 hover:to-rose-500 dark:hover:bg-gray-700"><span
-                        class="inline-flex justify-center items-center w-12 h-6 flex-none"><svg viewBox="0 0 24 24"
-                            width="16" height="16" class="inline-block">
-                            <path fill="currentColor"
-                                d="M9,5V9H21V5M9,19H21V15H9M9,14H21V10H9M4,9H8V5H4M4,19H8V15H4M4,14H8V10H4V14Z">
-                            </path>
-                        </svg>
-                        <!---->
-                    </span><span class="grow">Submenus</span><span
-                        class="inline-flex justify-center items-center w-12 h-6 flex-none"><svg viewBox="0 0 24 24"
-                            width="16" height="16" class="inline-block">
-                            <path fill="currentColor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z">
-                            </path>
-                        </svg>
-                        <!---->
-                    </span></a>
-                <!---->
             </li>
         </ul>
         <p class="p-3 text-xs uppercase text-gray-300">About</p>

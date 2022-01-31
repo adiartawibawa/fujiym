@@ -1,6 +1,4 @@
-<nav id="nav"
-    class="top-0 left-0 right-0 fixed flex bg-white h-14 border-b border-gray-100 z-30 w-screen transition-position lg:w-auto lg:items-stretch dark:bg-gray-900 dark:border-gray-800 shadow-sm">
-
+<nav id="navbar-main" class="navbar is-fixed-top shadow-sm">
     <div class="flex-1 items-stretch flex h-14">
         <div
             class="flex lg:hidden items-center grow-0 shrink-0 relative cursor-pointer hover:text-rose-500 text-black dark:text-white py-2 pl-3 pr-0">
@@ -13,7 +11,7 @@
                 <!---->
             </span>
         </div>
-        <div
+        <div x-on:click="sidebar = !sidebar" x-ref="toogleSideBar"
             class="hidden lg:flex items-center grow-0 shrink-0 relative cursor-pointer hover:text-rose-500 text-black dark:text-white py-2 pl-3 pr-0">
             <span class="inline-flex justify-center items-center w-6 h-6"><svg viewBox="0 0 24 24" width="24" height="24"
                     class="inline-block">
@@ -27,8 +25,9 @@
         <div
             class="hidden lg:flex items-center grow-0 shrink-0 relative cursor-pointer hover:text-rose-500 text-black dark:text-white py-2 px-3">
             <div class="">
-                <div class="relative border-gray-700 dark:bg-gray-800"><input placeholder="Search (ctrl+k)" type="text"
-                        class="px-3 py-2 max-w-full focus:ring focus:outline-none dark:placeholder-gray-400 w-full h-12 border-0 border-gray-700 dark:bg-gray-800 rounded">
+                <div class="relative border-gray-700 dark:bg-gray-800">
+                    <input placeholder="Search (ctrl+k)" type="text"
+                        class="px-3 py-2 max-w-full focus:ring-rose-500/50 focus:outline-none dark:placeholder-gray-400 w-full h-12 border-0 border-gray-700 dark:bg-gray-800 rounded">
                     <!---->
                     <!---->
                     <!---->
