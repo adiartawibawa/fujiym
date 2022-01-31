@@ -2,21 +2,10 @@
     <div class="flex-1 items-stretch flex h-14">
         <div
             class="flex lg:hidden items-center grow-0 shrink-0 relative cursor-pointer hover:text-rose-500 text-black dark:text-white py-2 pl-3 pr-0">
-            <span class="inline-flex justify-center items-center w-6 h-6"><svg viewBox="0 0 24 24" width="24" height="24"
-                    class="inline-block">
+            <span class="inline-flex justify-center items-center w-6 h-6">
+                <svg viewBox="0 0 24 24" width="24" height="24" class="inline-block">
                     <path fill="currentColor"
                         d="M19,13H3V11H19L15,7L16.4,5.6L22.8,12L16.4,18.4L15,17L19,13M3,6H13V8H3V6M13,16V18H3V16H13Z">
-                    </path>
-                </svg>
-                <!---->
-            </span>
-        </div>
-        <div x-on:click="sidebar = !sidebar" x-ref="toogleSideBar"
-            class="hidden lg:flex items-center grow-0 shrink-0 relative cursor-pointer hover:text-rose-500 text-black dark:text-white py-2 pl-3 pr-0">
-            <span class="inline-flex justify-center items-center w-6 h-6"><svg viewBox="0 0 24 24" width="24" height="24"
-                    class="inline-block">
-                    <path fill="currentColor"
-                        d="M5,13L9,17L7.6,18.42L1.18,12L7.6,5.58L9,7L5,11H21V13H5M21,6V8H11V6H21M21,16V18H11V16H21Z">
                     </path>
                 </svg>
                 <!---->
