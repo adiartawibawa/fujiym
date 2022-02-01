@@ -22,7 +22,7 @@
 
 <body class="font-sans antialiased">
 
-    <div id="app" class="flex flex-col h-screen justify-between">
+    <div id="app" class="flex flex-col h-screen justify-between" x-data="{open:false}">
 
         @include('layouts.components.topnav')
 
