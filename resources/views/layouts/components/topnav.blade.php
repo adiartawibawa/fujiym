@@ -144,18 +144,22 @@
                         <span @click.away="open = false" class="px-2 transition-colors">Messages</span>
                     </a>
                     <hr class="hidden lg:block lg:my-2 border-t border-gray-100 dark:border-gray-700">
-                    <a
-                        class="flex items-center grow-0 shrink-0 relative hover:text-rose-500 cursor-pointer hover:text-rose-500 text-black dark:text-white py-2 px-3">
-                        <span class="inline-flex justify-center items-center w-6 h-6 transition-colors">
-                            <svg viewBox="0 0 24 24" width="16" height="16" class="inline-block">
-                                <path fill="currentColor"
-                                    d="M16,17V14H9V10H16V7L21,12L16,17M14,2A2,2 0 0,1 16,4V6H14V4H5V20H14V18H16V20A2,2 0 0,1 14,22H5A2,2 0 0,1 3,20V4A2,2 0 0,1 5,2H14Z">
-                                </path>
-                            </svg>
-                            <!---->
-                        </span>
-                        <span @click.away="open = false" class="px-2 transition-colors">Log Out</span>
-                    </a>
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                    this.closest('form').submit();"
+                            class="flex items-center grow-0 shrink-0 relative hover:text-rose-500 cursor-pointer hover:text-rose-500 text-black dark:text-white py-2 px-3">
+                            <span class="inline-flex justify-center items-center w-6 h-6 transition-colors">
+                                <svg viewBox="0 0 24 24" width="16" height="16" class="inline-block">
+                                    <path fill="currentColor"
+                                        d="M16,17V14H9V10H16V7L21,12L16,17M14,2A2,2 0 0,1 16,4V6H14V4H5V20H14V18H16V20A2,2 0 0,1 14,22H5A2,2 0 0,1 3,20V4A2,2 0 0,1 5,2H14Z">
+                                    </path>
+                                </svg>
+                                <!---->
+                            </span>
+                            <span @click.away="open = false" class="px-2 transition-colors">Log Out</span>
+                        </a>
+                    </form>
                 </div>
             </div>
 

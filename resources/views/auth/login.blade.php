@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <x-jet-authentication-card>
+    {{-- <x-jet-authentication-card>
         <x-slot name="logo">
             <x-jet-authentication-card-logo />
         </x-slot>
@@ -17,24 +17,24 @@
 
             <div>
                 <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" requirose autofocus />
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="current-password" />
+                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" requirose autocomplete="current-password" />
             </div>
 
             <div class="block mt-4">
                 <label for="remember_me" class="flex items-center">
                     <x-jet-checkbox id="remember_me" name="remember" />
-                    <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+                    <span class="ml-2 text-sm text-rose-600">{{ __('Remember me') }}</span>
                 </label>
             </div>
 
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('password.request') }}">
+                    <a class="underline text-sm text-rose-600 hover:text-rose-900" href="{{ route('password.request') }}">
                         {{ __('Forgot your password?') }}
                     </a>
                 @endif
@@ -44,5 +44,83 @@
                 </x-jet-button>
             </div>
         </form>
-    </x-jet-authentication-card>
+    </x-jet-authentication-card> --}}
+    <div class="lg:w-1/2 xl:max-w-screen-sm">
+        <div class="py-12 bg-rose-100 lg:bg-white flex justify-center lg:justify-start lg:px-12">
+            <div class="cursor-pointer flex items-center">
+                <div>
+                    <svg class="w-10 text-rose-500" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Layer_1" x="0px" y="0px"
+                        viewBox="0 0 225 225" style="enable-background:new 0 0 225 225;" xml:space="preserve">
+                        <style type="text/css">
+                            .st0 {
+                                fill: none;
+                                stroke: currentColor;
+                                stroke-width: 20;
+                                stroke-linecap: round;
+                                stroke-miterlimit: 3;
+                            }
+
+                        </style>
+                        <g transform="matrix( 1, 0, 0, 1, 0,0) ">
+                            <g>
+                                <path id="Layer0_0_1_STROKES" class="st0"
+                                    d="M173.8,151.5l13.6-13.6 M35.4,89.9l29.1-29 M89.4,34.9v1 M137.4,187.9l-0.6-0.4     M36.6,138.7l0.2-0.2 M56.1,169.1l27.7-27.6 M63.8,111.5l74.3-74.4 M87.1,188.1L187.6,87.6 M110.8,114.5l57.8-57.8" />
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+                <div class="text-2xl text-rose-800 tracking-wide ml-2 font-semibold">{{ config('app.name') }}</div>
+            </div>
+        </div>
+        <div class="mt-10 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
+            <h2
+                class="text-center text-4xl text-rose-900 font-display font-semibold lg:text-left xl:text-5xl
+                    xl:text-bold">
+                Log in</h2>
+            <div class="mt-12">
+                <form>
+                    <div>
+                        <div class="text-sm font-bold text-gray-700 tracking-wide">Email Address</div>
+                        <input
+                            class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-rose-500"
+                            type="" placeholder="mike@gmail.com">
+                    </div>
+                    <div class="mt-8">
+                        <div class="flex justify-between items-center">
+                            <div class="text-sm font-bold text-gray-700 tracking-wide">
+                                Password
+                            </div>
+                            <div>
+                                <a
+                                    class="text-xs font-display font-semibold text-rose-600 hover:text-rose-800
+                                        cursor-pointer">
+                                    Forgot Password?
+                                </a>
+                            </div>
+                        </div>
+                        <input
+                            class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-rose-500"
+                            type="" placeholder="Enter your password">
+                    </div>
+                    <div class="mt-10">
+                        <button
+                            class="bg-rose-500 text-gray-100 p-4 w-full rounded-full tracking-wide
+                                font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-rose-600
+                                shadow-lg">
+                            Log In
+                        </button>
+                    </div>
+                </form>
+                <div class="mt-12 text-sm font-display font-semibold text-gray-700 text-center">
+                    Don't have an account ? <a class="cursor-pointer text-rose-600 hover:text-rose-800">Sign
+                        up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="hidden lg:flex items-center justify-center bg-gray-800 bg-opacity-60 flex-1 h-screen bg-cover bg-center bg-blend-overlay"
+        style="background-image: url(https://images.unsplash.com/photo-1639928324593-b0bbaae2a062?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=686&q=80)">
+    </div>
 </x-guest-layout>
