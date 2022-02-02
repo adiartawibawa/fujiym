@@ -1,46 +1,51 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="csrf-token" content="{{ csrf_token() }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}"
+    x-data="{currentTheme: localStorage.getItem('theme') || localStorage.setItem('theme', 'system')}"
+    x-init="$watch('currentTheme', val => localStorage.setItem('theme', val))"
+    x-bind:class="{'dark': currentTheme === 'dark' || (currentTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
-        <!-- Styles -->
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
 
-        @livewireStyles
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
-        <!-- Scripts -->
-        <script src="{{ mix('js/app.js') }}" defer></script>
-    </head>
-    <body class="font-sans antialiased">
-        <x-jet-banner />
+    @livewireStyles
 
-        <div class="min-h-screen bg-gray-100">
-            @livewire('navigation-menu')
+    <!-- Scripts -->
+    <script src="{{ mix('js/app.js') }}" defer></script>
 
-            <!-- Page Heading -->
-            @if (isset($header))
-                <header class="bg-white shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>
-                </header>
-            @endif
+</head>
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
+<body class="bg-coolGray-100 dark:bg-gray-800 dark:text-gray-100">
 
-        @stack('modals')
+    <div id="app" class="flex flex-col h-screen justify-between">
 
-        @livewireScripts
-    </body>
+        @include('layouts.components.topnav')
+
+        @include('layouts.components.sidebar')
+
+        @include('layouts.components.sub-topnav')
+
+        <main class="py-6 px-0 md:px-6">
+            {{-- content goes here --}}
+            {{ $slot }}
+        </main>
+
+        @include('layouts.components.footer')
+    </div>
+
+    @stack('modals')
+
+    @livewireScripts
+
+</body>
+
 </html>
