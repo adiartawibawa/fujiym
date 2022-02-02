@@ -1,50 +1,5 @@
 <x-guest-layout>
-    {{-- <x-jet-authentication-card>
-        <x-slot name="logo">
-            <x-jet-authentication-card-logo />
-        </x-slot>
 
-        <x-jet-validation-errors class="mb-4" />
-
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
-            </div>
-        @endif
-
-        <form method="POST" action="{{ route('login') }}">
-            @csrf
-
-            <div>
-                <x-jet-label for="email" value="{{ __('Email') }}" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" requirose autofocus />
-            </div>
-
-            <div class="mt-4">
-                <x-jet-label for="password" value="{{ __('Password') }}" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" requirose autocomplete="current-password" />
-            </div>
-
-            <div class="block mt-4">
-                <label for="remember_me" class="flex items-center">
-                    <x-jet-checkbox id="remember_me" name="remember" />
-                    <span class="ml-2 text-sm text-rose-600">{{ __('Remember me') }}</span>
-                </label>
-            </div>
-
-            <div class="flex items-center justify-end mt-4">
-                @if (Route::has('password.request'))
-                    <a class="underline text-sm text-rose-600 hover:text-rose-900" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
-                @endif
-
-                <x-jet-button class="ml-4">
-                    {{ __('Log in') }}
-                </x-jet-button>
-            </div>
-        </form>
-    </x-jet-authentication-card> --}}
     <div class="lg:w-1/2 xl:max-w-screen-sm">
         <div class="py-12 bg-rose-100 lg:bg-white flex justify-center lg:justify-start lg:px-12">
             <div class="cursor-pointer flex items-center">
@@ -77,46 +32,63 @@
             <h2
                 class="text-center text-4xl text-rose-900 font-display font-semibold lg:text-left xl:text-5xl
                     xl:text-bold">
-                Log in</h2>
+                Sign in</h2>
             <div class="mt-12">
-                <form>
+                <form method="POST" action="{{ route('login') }}">
+                    @csrf
                     <div>
-                        <div class="text-sm font-bold text-gray-700 tracking-wide">Email Address</div>
-                        <input
+                        <x-jet-label class="text-sm font-bold text-gray-700 tracking-wide" for="email"
+                            value="{{ __('Email or Username') }}" />
+                        <x-jet-input id="email"
                             class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-rose-500"
-                            type="" placeholder="mike@gmail.com">
+                            type="text" name="email" :value="old('email')" requirose autofocus />
                     </div>
                     <div class="mt-8">
                         <div class="flex justify-between items-center">
                             <div class="text-sm font-bold text-gray-700 tracking-wide">
-                                Password
+                                {{ __('Password') }}
                             </div>
                             <div>
-                                <a
-                                    class="text-xs font-display font-semibold text-rose-600 hover:text-rose-800
+                                @if (Route::has('password.request'))
+                                    <a href="{{ route('password.request') }}"
+                                        class="text-xs font-display font-semibold text-rose-600 hover:text-rose-800
                                         cursor-pointer">
-                                    Forgot Password?
-                                </a>
+                                        {{ __('Forgot your password?') }}
+                                    </a>
+                                @endif
                             </div>
                         </div>
-                        <input
+                        <x-jet-input id="password"
                             class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-rose-500"
-                            type="" placeholder="Enter your password">
+                            type="password" name="password" requirose autocomplete="current-password" />
                     </div>
-                    <div class="mt-10">
+                    <div class="block mt-4">
+                        <label for="remember_me" class="flex items-center">
+                            <x-jet-checkbox id="remember_me" name="remember" />
+                            <span class="ml-2 text-sm text-rose-600">{{ __('Remember me') }}</span>
+                        </label>
+                    </div>
+                    <div class="mt-6">
                         <button
                             class="bg-rose-500 text-gray-100 p-4 w-full rounded-full tracking-wide
                                 font-semibold font-display focus:outline-none focus:shadow-outline hover:bg-rose-600
                                 shadow-lg">
-                            Log In
+                            Sign In
                         </button>
                     </div>
                 </form>
                 <div class="mt-12 text-sm font-display font-semibold text-gray-700 text-center">
-                    Don't have an account ? <a class="cursor-pointer text-rose-600 hover:text-rose-800">Sign
-                        up</a>
+                    Don't have an account ?
+                    <a href="{{ route('register') }}" class="cursor-pointer text-rose-600 hover:text-rose-800">
+                        Signup
+                    </a>
                 </div>
             </div>
+        </div>
+        <div class="mt-4 text-sm font-display font-semibold text-gray-700 text-center">
+            <a class="cursor-pointer text-rose-600 hover:text-rose-800" href="#">
+                Made with 💙 by <span class="font-bold">{{ config('app.creator') }} </span>
+            </a>
         </div>
     </div>
 
