@@ -1,8 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight dark:text-gray-100">
+        <h1 class="text-3xl font-semibold leading-tight">
             {{ __('Profile') }}
-        </h2>
+        </h1>
+    </x-slot>
+
+    <x-slot name="breadcrumbs">
+        {{ Breadcrumbs::render('profile') }}
     </x-slot>
 
     <div class="dark:bg-gray-900 dark:text-gray-100">

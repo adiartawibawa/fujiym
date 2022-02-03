@@ -4,7 +4,7 @@
     {{-- responsive navbar --}}
     <div class="flex-1 items-stretch flex h-14">
         <div
-            class="flex lg:hidden items-center grow-0 shrink-0 relative hover:text-rose-500 cursor-pointer hover:text-rose-500 text-black dark:text-white py-2 pl-3 pr-0">
+            class="flex lg:hidden items-center grow-0 shrink-0 relative hover:text-rose-500 cursor-pointer text-black dark:text-white py-2 pl-3 pr-0">
             <span class="inline-flex justify-center items-center w-6 h-6">
                 <svg viewBox="0 0 24 24" width="24" height="24" class="inline-block">
                     <path fill="currentColor"
@@ -19,7 +19,7 @@
     {{-- responsive navbar --}}
     <div class="flex-none items-stretch flex h-14 lg:hidden">
         <div
-            class="flex items-center grow-0 shrink-0 relative hover:text-rose-500 cursor-pointer hover:text-rose-500 text-black dark:text-white py-2 px-3">
+            class="flex items-center grow-0 shrink-0 relative hover:text-rose-500 cursor-pointer text-black dark:text-white py-2 px-3">
             <span class="inline-flex justify-center items-center w-6 h-6 relative">
                 <svg viewBox="0 0 24 24" width="20" height="20" class="inline-block">
                     <path fill="currentColor"
@@ -31,7 +31,7 @@
             </span>
         </div>
         <div
-            class="flex items-center grow-0 shrink-0 relative hover:text-rose-500 cursor-pointer hover:text-rose-500 text-black dark:text-white py-2 px-3">
+            class="flex items-center grow-0 shrink-0 relative hover:text-rose-500 cursor-pointer text-black dark:text-white py-2 px-3">
             <span class="inline-flex justify-center items-center w-6 h-6">
                 <svg viewBox="0 0 24 24" width="20" height="20" class="inline-block">
                     <path fill="currentColor"
@@ -50,7 +50,7 @@
 
             {{-- Notif --}}
             <div
-                class="flex items-center grow-0 shrink-0 relative hover:text-rose-500 cursor-pointer hover:text-rose-500 text-black dark:text-white py-2 px-3 lg:border-r lg:border-gray-100 lg:dark:border-gray-800 lg:w-16 lg:justify-center">
+                class="flex items-center grow-0 shrink-0 relative hover:text-rose-500 cursor-pointer text-black dark:text-white py-2 px-3 lg:border-r lg:border-gray-100 lg:dark:border-gray-800 lg:w-16 lg:justify-center">
                 <span class="inline-flex justify-center items-center w-6 h-6 relative transition-colors">
                     <svg viewBox="0 0 24 24" width="16" height="16" class="inline-block">
                         <path fill="currentColor"
@@ -65,7 +65,7 @@
             </div>
 
             {{-- About --}}
-            <a class="flex items-center grow-0 shrink-0 relative hover:text-rose-500 cursor-pointer hover:text-rose-500 text-black dark:text-white py-2 px-3 lg:border-r lg:border-gray-100 lg:dark:border-gray-800 lg:w-16 lg:justify-center"
+            <a class="flex items-center grow-0 shrink-0 relative hover:text-rose-500 cursor-pointer text-black dark:text-white py-2 px-3 lg:border-r lg:border-gray-100 lg:dark:border-gray-800 lg:w-16 lg:justify-center"
                 href="#">
                 <span class="inline-flex justify-center items-center w-6 h-6 transition-colors">
                     <svg viewBox="0 0 24 24" width="16" height="16" class="inline-block">
@@ -80,7 +80,7 @@
 
             {{-- user logged in --}}
             <div x-data="{ open: false }"
-                class="block items-center grow-0 shrink-0 relative hover:text-rose-500 cursor-pointer hover:text-rose-500 text-black dark:text-white lg:flex p-0 lg:py-2 lg:px-3 lg:border-r lg:border-gray-100 lg:dark:border-gray-800 dropdown">
+                class="block items-center grow-0 shrink-0 relative hover:text-rose-500 cursor-pointer text-black dark:text-white lg:flex p-0 lg:py-2 lg:px-3 lg:border-r lg:border-gray-100 lg:dark:border-gray-800 dropdown">
                 {{-- Current User --}}
                 <a @click="open = ! open "
                     class="flex items-center py-2 px-3 bg-gray-100 dark:bg-gray-800 lg:bg-transparent lg:dark:bg-transparent">
@@ -95,7 +95,7 @@
                     <div>
                         <span>{{ Auth::user()->name }}</span>
                     </div>
-                    <span class="inline-flex justify-center items-center w-6 h-6 hidden lg:inline-flex">
+                    <span class="justify-center items-center w-6 h-6 hidden lg:inline-flex">
                         <svg viewBox="0 0 24 24" width="16" height="16" class="inline-block">
                             <path fill="currentColor" d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z">
                             </path>
@@ -167,7 +167,7 @@
                         @csrf
                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                     this.closest('form').submit();"
-                            class="flex items-center grow-0 shrink-0 relative hover:text-rose-500 cursor-pointer hover:text-rose-500 text-black dark:text-white py-2 px-3">
+                            class="flex items-center grow-0 shrink-0 relative hover:text-rose-500 cursor-pointer text-black dark:text-white py-2 px-3">
                             <span class="inline-flex justify-center items-center w-6 h-6 transition-colors">
                                 <svg viewBox="0 0 24 24" width="16" height="16" class="inline-block">
                                     <path fill="currentColor"
