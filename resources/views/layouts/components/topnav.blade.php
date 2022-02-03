@@ -84,14 +84,16 @@
                 {{-- Current User --}}
                 <a @click="open = ! open "
                     class="flex items-center py-2 px-3 bg-gray-100 dark:bg-gray-800 lg:bg-transparent lg:dark:bg-transparent">
-                    <div class="w-6 h-6 mr-3 inline-flex">
-                        <img src="https://avatars.dicebear.com/api/avataaars/example.svg?options[top][]=shortHair&amp;options[accessoriesChance]=93"
-                            alt="John Doe"
-                            class="rounded-full block h-auto w-full max-w-full bg-gray-100 dark:bg-gray-800">
-                        <!---->
-                    </div>
+                    @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
+                        <div class="w-6 h-6 mr-3 inline-flex">
+                            <img src="{{ Auth::user()->profile_photo_url }}
+                            alt=" {{ Auth::user()->name }}"
+                                class="rounded-full block h-auto w-full max-w-full bg-gray-100 dark:bg-gray-800">
+                            <!---->
+                        </div>
+                    @endif
                     <div>
-                        <span>John Doe</span>
+                        <span>{{ Auth::user()->name }}</span>
                     </div>
                     <span class="inline-flex justify-center items-center w-6 h-6 hidden lg:inline-flex">
                         <svg viewBox="0 0 24 24" width="16" height="16" class="inline-block">
@@ -107,8 +109,9 @@
                     x-transition:leave.scale.90 x-transition:leave="transition ease-in duration-300"
                     x-transition:leave="transition ease-in duration-300"
                     class="text-sm border-gray-100 border-b lg:border-b-0 lg:border-gray-200 lg:border-t lg:bg-white lg:absolute lg:top-full lg:left-0 lg:min-w-full lg:z-20 lg:shadow-md lg:rounded-b lg:dark:bg-gray-800 dark:border-gray-700">
-                    <a
-                        class="flex items-center grow-0 shrink-0 relative hover:text-rose-500 cursor-pointer hover:text-rose-500 text-black dark:text-white py-2 px-3">
+
+                    <x-jet-responsive-nav-link href="{{ route('profile.show') }}"
+                        :active="request()->routeIs('profile.show')" @click.away="open = false">
                         <span class="inline-flex justify-center items-center w-6 h-6 transition-colors">
                             <svg viewBox="0 0 24 24" width="16" height="16" class="inline-block">
                                 <path fill="currentColor"
@@ -117,10 +120,24 @@
                             </svg>
                             <!---->
                         </span>
-                        <span @click.away="open = false" class="px-2 transition-colors">My Profile</span>
-                    </a>
-                    <a
-                        class="flex items-center grow-0 shrink-0 relative hover:text-rose-500 cursor-pointer hover:text-rose-500 text-black dark:text-white py-2 px-3">
+                        <span class="px-2 transition-colors">{{ __('My Profile') }}</span>
+                    </x-jet-responsive-nav-link>
+
+                    @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
+                        <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}"
+                            :active="request()->routeIs('api-tokens.index')">
+                            <span class="inline-flex justify-center items-center w-6 h-6 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="inline-block"
+                                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z" />
+                                </svg>
+                            </span>
+                            <span class="px-2 transition-colors">{{ __('API Tokens') }}</span>
+                        </x-jet-responsive-nav-link>
+                    @endif
+
+                    <x-jet-responsive-nav-link href="#" @click.away="open = false">
                         <span class="inline-flex justify-center items-center w-6 h-6 transition-colors">
                             <svg viewBox="0 0 24 24" width="16" height="16" class="inline-block">
                                 <path fill="currentColor"
@@ -129,10 +146,10 @@
                             </svg>
                             <!---->
                         </span>
-                        <span @click.away="open = false" class="px-2 transition-colors">Settings</span>
-                    </a>
-                    <a
-                        class="flex items-center grow-0 shrink-0 relative hover:text-rose-500 cursor-pointer hover:text-rose-500 text-black dark:text-white py-2 px-3">
+                        <span class="px-2 transition-colors">{{ __('Settings') }}</span>
+                    </x-jet-responsive-nav-link>
+
+                    <x-jet-responsive-nav-link href="#" @click.away="open = false">
                         <span class="inline-flex justify-center items-center w-6 h-6 transition-colors">
                             <svg viewBox="0 0 24 24" width="16" height="16" class="inline-block">
                                 <path fill="currentColor"
@@ -141,9 +158,11 @@
                             </svg>
                             <!---->
                         </span>
-                        <span @click.away="open = false" class="px-2 transition-colors">Messages</span>
-                    </a>
+                        <span class="px-2 transition-colors">{{ __('Messages') }}</span>
+                    </x-jet-responsive-nav-link>
+
                     <hr class="hidden lg:block lg:my-2 border-t border-gray-100 dark:border-gray-700">
+
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
                         <a href="{{ route('logout') }}" onclick="event.preventDefault();

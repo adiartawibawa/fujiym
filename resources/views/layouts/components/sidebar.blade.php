@@ -10,7 +10,18 @@
         <p class="p-3 text-xs uppercase text-gray-400">General</p>
         <ul>
             <li>
-                <a class="router-link-active bg-gray-700 bg-opacity-70 dark:bg-gray-700 dark:bg-opacity-70 flex cursor-pointer py-2 text-gray-300 hover:bg-gray-700 dark:hover:bg-gray-700"
+                <x-menu-sidebar href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    <span class="inline-flex justify-center items-center w-12 h-6 flex-none">
+                        <svg viewBox="0 0 24 24" width="16" height="16" class="inline-block">
+                            <path fill="currentColor"
+                                d="M21,14H3V4H21M21,2H3C1.89,2 1,2.89 1,4V16A2,2 0 0,0 3,18H10L8,21V22H16V21L14,18H21A2,2 0 0,0 23,16V4C23,2.89 22.1,2 21,2Z">
+                            </path>
+                        </svg>
+                        <!---->
+                    </span>
+                    <span class="grow">{{ __('Dashboard') }}</span>
+                </x-menu-sidebar>
+                {{-- <a class="router-link-active bg-gray-700 bg-opacity-70 dark:bg-gray-700 dark:bg-opacity-70 flex cursor-pointer py-2 text-gray-300 hover:bg-gray-700 dark:hover:bg-gray-700"
                     aria-current="page">
                     <span class="inline-flex justify-center items-center w-12 h-6 flex-none">
                         <svg viewBox="0 0 24 24" width="16" height="16" class="inline-block">
@@ -22,7 +33,7 @@
                     </span>
                     <span class="grow">Dashboard</span>
                     <!---->
-                </a>
+                </a> --}}
                 <!---->
             </li>
         </ul>
@@ -182,10 +193,23 @@
         </ul> --}}
         <p class="p-3 text-xs uppercase text-gray-400">About</p>
         <ul>
-            <li><a href="https://justboil.me/tailwind-admin-templates/vue-dashboard/"
+            <li>
+                <x-menu-sidebar href="#" >
+                    <span class="inline-flex justify-center items-center w-12 h-6 flex-none">
+                        <svg viewBox="0 0 24 24" width="16" height="16" class="inline-block">
+                            <path fill="currentColor"
+                                d="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z">
+                            </path>
+                        </svg>
+                        <!---->
+                    </span>
+                    <span class="grow">{{ __('About') }}</span>
+                </x-menu-sidebar>
+                {{-- <a href="https://justboil.me/tailwind-admin-templates/vue-dashboard/"
                     exact-active-class="bg-gray-700 bg-opacity-70 dark:bg-gray-700 dark:bg-opacity-70"
                     class="flex cursor-pointer py-2 text-gray-300 hover:bg-gray-700 dark:hover:bg-gray-700"><span
-                        class="inline-flex justify-center items-center w-12 h-6 flex-none"><svg viewBox="0 0 24 24"
+                        class="inline-flex justify-center items-center w-12 h-6 flex-none">
+                        <svg viewBox="0 0 24 24"
                             width="16" height="16" class="inline-block">
                             <path fill="currentColor"
                                 d="M15.07,11.25L14.17,12.17C13.45,12.89 13,13.5 13,15H11V14.5C11,13.39 11.45,12.39 12.17,11.67L13.41,10.41C13.78,10.05 14,9.55 14,9C14,7.89 13.1,7 12,7A2,2 0 0,0 10,9H8A4,4 0 0,1 12,5A4,4 0 0,1 16,9C16,9.88 15.64,10.67 15.07,11.25M13,19H11V17H13M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12C22,6.47 17.5,2 12,2Z">
@@ -194,7 +218,7 @@
                         <!---->
                     </span><span class="grow">About</span>
                     <!---->
-                </a>
+                </a> --}}
                 <!---->
             </li>
         </ul>
