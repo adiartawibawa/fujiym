@@ -32,12 +32,14 @@
 
         @include('layouts.components.sidebar')
 
-        @include('layouts.components.sub-topnav')
+        <div class="flex-grow">
+            @include('layouts.components.sub-topnav')
 
-        <main class="py-6 px-0 md:px-6">
-            {{-- content goes here --}}
-            {{ $slot }}
-        </main>
+            <main class="py-6 px-0 md:px-6">
+                {{-- content goes here --}}
+                {{ $slot }}
+            </main>
+        </div>
 
         @include('layouts.components.footer')
     </div>

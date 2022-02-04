@@ -8,35 +8,44 @@
     </div>
     <div class="flex-1">
         <p class="p-3 text-xs uppercase text-gray-400">General</p>
-        <ul>
-            <li>
-                <x-menu-sidebar href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                    <span class="inline-flex justify-center items-center w-12 h-6 flex-none">
-                        <svg viewBox="0 0 24 24" width="16" height="16" class="inline-block">
-                            <path fill="currentColor"
-                                d="M21,14H3V4H21M21,2H3C1.89,2 1,2.89 1,4V16A2,2 0 0,0 3,18H10L8,21V22H16V21L14,18H21A2,2 0 0,0 23,16V4C23,2.89 22.1,2 21,2Z">
-                            </path>
-                        </svg>
-                        <!---->
-                    </span>
-                    <span class="grow">{{ __('Dashboard') }}</span>
-                </x-menu-sidebar>
-                {{-- <a class="router-link-active bg-gray-700 bg-opacity-70 dark:bg-gray-700 dark:bg-opacity-70 flex cursor-pointer py-2 text-gray-300 hover:bg-gray-700 dark:hover:bg-gray-700"
-                    aria-current="page">
-                    <span class="inline-flex justify-center items-center w-12 h-6 flex-none">
-                        <svg viewBox="0 0 24 24" width="16" height="16" class="inline-block">
-                            <path fill="currentColor"
-                                d="M21,14H3V4H21M21,2H3C1.89,2 1,2.89 1,4V16A2,2 0 0,0 3,18H10L8,21V22H16V21L14,18H21A2,2 0 0,0 23,16V4C23,2.89 22.1,2 21,2Z">
-                            </path>
-                        </svg>
-                        <!---->
-                    </span>
-                    <span class="grow">Dashboard</span>
-                    <!---->
-                </a> --}}
+
+        <x-menu-sidebar href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+            <span class="inline-flex justify-center items-center w-12 h-6 flex-none">
+                <svg viewBox="0 0 24 24" width="16" height="16" class="inline-block">
+                    <path fill="currentColor"
+                        d="M21,14H3V4H21M21,2H3C1.89,2 1,2.89 1,4V16A2,2 0 0,0 3,18H10L8,21V22H16V21L14,18H21A2,2 0 0,0 23,16V4C23,2.89 22.1,2 21,2Z">
+                    </path>
+                </svg>
                 <!---->
-            </li>
-        </ul>
+            </span>
+            <span class="grow">{{ __('Dashboard') }}</span>
+        </x-menu-sidebar>
+
+        <p class="p-3 text-xs uppercase text-gray-400">Administrator</p>
+
+        <x-menu-sidebar href="#">
+            <span class="inline-flex justify-center items-center w-12 h-6 flex-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="inline-block" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                <!---->
+            </span>
+            <span class="grow">{{ __('Users') }}</span>
+        </x-menu-sidebar>
+
+        <x-menu-sidebar href="{{ route('roles.index') }}" :active="request()->routeIs('roles.*')">
+            <span class="inline-flex justify-center items-center w-12 h-6 flex-none">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" class="inline-block" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2" />
+                </svg>
+                <!---->
+            </span>
+            <span class="grow">{{ __('Roles & Permissions') }}</span>
+        </x-menu-sidebar>
         {{-- <p class="p-3 text-xs uppercase text-gray-400">Examples</p>
         <ul>
             <li>
@@ -194,7 +203,7 @@
         <p class="p-3 text-xs uppercase text-gray-400">About</p>
         <ul>
             <li>
-                <x-menu-sidebar href="#" >
+                <x-menu-sidebar href="#">
                     <span class="inline-flex justify-center items-center w-12 h-6 flex-none">
                         <svg viewBox="0 0 24 24" width="16" height="16" class="inline-block">
                             <path fill="currentColor"

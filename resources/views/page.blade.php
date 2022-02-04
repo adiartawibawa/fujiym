@@ -1991,3 +1991,19 @@
     </div>
     <!---->
 </div>
+
+
+{{-- <x-app-layout>
+    <x-slot name="header">
+        <h1 class="text-3xl font-semibold leading-tight"> {{ __('Dashboard') }} </h1>
+    </x-slot>
+
+    <x-slot name="breadcrumbs">
+        {{ Breadcrumbs::render('dashboard') }}
+    </x-slot>
+
+    <div>
+
+    </div>
+
+</x-app-layout> --}}

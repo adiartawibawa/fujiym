@@ -41,7 +41,7 @@
                             value="{{ __('Email or Username') }}" />
                         <x-jet-input id="email"
                             class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-rose-500"
-                            type="text" name="email" :value="old('email')" requirose autofocus />
+                            type="text" name="email" :value="old('email')" require autofocus />
                     </div>
                     <div class="mt-8">
                         <div class="flex justify-between items-center">
@@ -60,7 +60,7 @@
                         </div>
                         <x-jet-input id="password"
                             class="w-full text-lg py-2 border-b border-gray-300 focus:outline-none focus:border-rose-500"
-                            type="password" name="password" requirose autocomplete="current-password" />
+                            type="password" name="password" require autocomplete="current-password" />
                     </div>
                     <div class="block mt-4">
                         <label for="remember_me" class="flex items-center">

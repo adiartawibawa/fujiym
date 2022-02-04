@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Roles\RoleController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,6 +20,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('dashboard');
-})->name('dashboard');
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    // Dashboard
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+
+    // Roles & Permissions
+    Route::resource('roles', RoleController::class);
+    Route::get('roles/reload-permissions/{id}', [RoleController::class, 'reloadPermissions'])->name('roles.update');
+    Route::get('roles/reload-permissions', [RoleController::class, 'reloadPermissions'])->name('roles.update');
+});
