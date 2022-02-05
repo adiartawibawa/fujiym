@@ -14,7 +14,8 @@
             </h2>
         </header>
         <div class="p-4">
-            <div class="flex items-center justify-end pb-3">
+            <x-flash-message></x-flash-message>
+            <div class="flex items-center justify-end pt-3 pb-3">
                 <div class="font-bold">
                     <a href="{{ url('roles/create') }}" class="px-4 py-3 bg-gray-800 text-gray-100 rounded">
                         <svg xmlns="http://www.w3.org/2000/svg" width=16 height=16 class="inline-block" fill="none"

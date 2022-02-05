@@ -12,7 +12,7 @@
     </x-slot>
 
     @if (empty($role))
-        <form method="POST" action="{{ route('roles.store') }}">
+        <form method="POST" action="{{ url('roles') }}">
         @else
             <form method="POST" action="{{ route('roles.update', $role->id) }}">
                 <input type="hidden" name="id" value="{{ $role->id }}" />
@@ -35,15 +35,17 @@
                 </header>
                 <div class="p-6 flex-1">
                     <div class="flex justify-between items-center">
+
                         <div class="space-y-3">
+                            <x-flash-message></x-flash-message>
                             <x-jet-label class="text-sm text-gray-700 tracking-wide" for="email"
                                 value="{{ __('Role Name') }}" />
                             <input id="name" type="text" name="name"
-                                class="w-full text-lg py-2 border-b focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm dark:bg-gray-800 dark:text-gray-200 border-gray-300 focus:outline-none focus:border-rose-500 @error('name') is-invalid @enderror @if (!$errors->has('name') && old('name')) is-valid @endif"
+                                class="text-sm py-2 border-b focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm dark:bg-gray-800 dark:text-gray-200 border-gray-300 focus:outline-none focus:border-rose-500 @error('name') is-invalid @enderror @if (!$errors->has('name') && old('name')) is-valid @endif"
                                 value="{{ old('name', !empty($role) ? $role->name : null) }}"
                                 {{ $disabled ?? 'false' }} require autofocus />
                             @error('name')
-                                <div class="  invalid-feedback">
+                                <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror

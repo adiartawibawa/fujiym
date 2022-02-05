@@ -8,7 +8,7 @@ use App\Models\Role;
 use App\Repositories\Admin\Interfaces\PermissionRepositoryInterface;
 use App\Repositories\Admin\Interfaces\RoleRepositoryInterface;
 use App\Traits\Authorizable;
-use Illuminate\Http\Request;
+use Nwidart\Modules\Facades\Module;
 
 class RoleController extends Controller
 {
@@ -66,11 +66,11 @@ class RoleController extends Controller
     {
         $params = $request->validated();
         if ($this->roleRepository->create($params)) {
-            return redirect('pages/roles')
+            return redirect('roles')
                 ->with('success', __('roles.success_create_message'));
         }
 
-        return redirect('pages/roles/create')
+        return redirect('roles/create')
             ->with('error', 'Role could not be saved!');
     }
 
@@ -115,11 +115,11 @@ class RoleController extends Controller
         $role = $this->roleRepository->findById($id);
 
         if ($this->roleRepository->update($id, $request->validated())) {
-            return redirect('pages/roles')
+            return redirect('roles')
                 ->with('success', __('roles.success_updated_message', ['name' => $role->name]));
         }
 
-        return redirect('pages/roles')
+        return redirect('roles')
             ->with('error', __('roles.fail_to_update_message', ['name' => $role->name]));
     }
 
@@ -134,11 +134,11 @@ class RoleController extends Controller
         $role = $this->roleRepository->findById($id);
 
         if ($this->roleRepository->delete($id)) {
-            return redirect('pages/roles')
+            return redirect('roles')
                 ->with('success', __('roles.success_deleted_message', ['name' => $role->name]));
         }
 
-        return redirect('pages/roles')
+        return redirect('roles')
             ->with('error', __('roles.fail_to_delete_message', ['name' => $role->name]));
     }
 
@@ -146,54 +146,54 @@ class RoleController extends Controller
     {
         $this->initModules();
         if ($roleId) {
-            return redirect('pages/roles/' . $roleId . '/edit')
+            return redirect('roles/' . $roleId . '/edit')
                 ->with('success', __('roles.success_relaod_permission_message'));
         }
 
-        return redirect('pages/roles/create')
+        return redirect('roles/create')
             ->with('success', __('roles.success_relaod_permission_message'));
     }
 
 
-    // private function initModules()
-    // {
-    //     $modules = Module::getOrdered();
-    //     $moduleAdminMenus = [];
+    private function initModules()
+    {
+        $modules = Module::getOrdered();
+        $moduleAdminMenus = [];
 
-    //     if ($modules) {
-    //         foreach ($modules as $module) {
-    //             $this->initModulePermissions($module);
-    //         }
-    //     }
-    // }
+        if ($modules) {
+            foreach ($modules as $module) {
+                $this->initModulePermissions($module);
+            }
+        }
+    }
 
-    // private function getModuleDetails($module)
-    // {
-    //     $moduleJson = $module->getPath() . '/module.json';
-    //     return json_decode(file_get_contents($moduleJson), true);
-    // }
+    private function getModuleDetails($module)
+    {
+        $moduleJson = $module->getPath() . '/module.json';
+        return json_decode(file_get_contents($moduleJson), true);
+    }
 
-    // private function initModulePermissions($module)
-    // {
-    //     $moduleDetails = $this->getModuleDetails($module);
-    //     if (!empty($moduleDetails['permissions'])) {
-    //         foreach ($moduleDetails['permissions'] as $permission) {
-    //             $this->initPermissionActions($permission);
-    //         }
-    //     }
-    // }
+    private function initModulePermissions($module)
+    {
+        $moduleDetails = $this->getModuleDetails($module);
+        if (!empty($moduleDetails['permissions'])) {
+            foreach ($moduleDetails['permissions'] as $permission) {
+                $this->initPermissionActions($permission);
+            }
+        }
+    }
 
-    // private function initPermissionActions($permission)
-    // {
-    //     $permissionMappings = ['view', 'add', 'edit', 'delete'];
+    private function initPermissionActions($permission)
+    {
+        $permissionMappings = ['view', 'add', 'edit', 'delete'];
 
-    //     $permissionActions = [];
-    //     foreach ($permissionMappings as $permissionMapping) {
-    //         $name = $permissionMapping . '_' . $permission;
-    //         $permissionActions[] = $this->permissionRepository->create(['name' => $name]);
-    //     }
+        $permissionActions = [];
+        foreach ($permissionMappings as $permissionMapping) {
+            $name = $permissionMapping . '_' . $permission;
+            $permissionActions[] = $this->permissionRepository->create(['name' => $name]);
+        }
 
-    //     $adminRole = $this->roleRepository->findByName('Admin');
-    //     $adminRole->givePermissionTo($permissionActions);
-    // }
+        $adminRole = $this->roleRepository->findByName('Admin');
+        $adminRole->givePermissionTo($permissionActions);
+    }
 }

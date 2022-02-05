@@ -27,7 +27,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     })->name('dashboard');
 
     // Roles & Permissions
-    Route::resource('roles', RoleController::class);
     Route::get('roles/reload-permissions/{id}', [RoleController::class, 'reloadPermissions'])->name('roles.update');
     Route::get('roles/reload-permissions', [RoleController::class, 'reloadPermissions'])->name('roles.update');
+    Route::resource('roles', RoleController::class);
 });
