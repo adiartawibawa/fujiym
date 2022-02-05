@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Roles\RoleController;
+use App\Http\Controllers\Users\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -30,4 +31,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function () {
     Route::get('roles/reload-permissions/{id}', [RoleController::class, 'reloadPermissions'])->name('roles.update');
     Route::get('roles/reload-permissions', [RoleController::class, 'reloadPermissions'])->name('roles.update');
     Route::resource('roles', RoleController::class);
+
+    // Users
+    Route::resource('users', UserController::class);
 });

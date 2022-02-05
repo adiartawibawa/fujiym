@@ -13,4 +13,9 @@ class Controller extends BaseController
 
     protected $data = [];
     protected $perPage = 10;
+
+    // public function __construct()
+    // {
+    //     $this->data['currentAdminMenu'] = '';
+    // }
 }

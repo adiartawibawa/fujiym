@@ -31,3 +31,21 @@ Breadcrumbs::for('role-create', function (BreadcrumbTrail $trail) {
     $trail->parent('roles');
     $trail->push('New Role', route('roles.create'));
 });
+
+// Dashboard > User
+Breadcrumbs::for('users', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Management Users', route('users.index'));
+});
+
+// Dashboard > Users > Create
+Breadcrumbs::for('user-create', function (BreadcrumbTrail $trail) {
+    $trail->parent('users');
+    $trail->push('Add New User', route('users.create'));
+});
+
+// Dashboard > Users > [User]
+Breadcrumbs::for('user-show', function (BreadcrumbTrail $trail, $item) {
+    $trail->parent('users');
+    $trail->push($item->name, route('users.show', $item->id));
+});
